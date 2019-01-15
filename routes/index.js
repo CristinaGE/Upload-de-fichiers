@@ -5,8 +5,7 @@ const upload = multer({ dest: 'tmp/', limits:{fileSize : 3 * 1024 *1024,} });
 const fs = require('fs');
 var app = express();
 
-router.post('/uploaddufichier', upload.array('monfichier', 3), function (req, res, next) {
-  console.log('hello')
+router.post('/monupload', upload.array('monfichier', 3), function (req, res, next) {
   for(let i = 0; i < req.files.length; i++){
   fs.rename(req.files[i].path, 'public/images/' + req.files[i].originalname, function(err){
     if (err) {
